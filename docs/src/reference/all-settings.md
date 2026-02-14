@@ -1454,13 +1454,14 @@ When trusted, project settings are synchronized automatically, language and MCP 
   "quick_actions": true,
   "selections_menu": true,
   "agent_review": true,
-  "code_actions": false
+  "code_actions": false,
+  "height": 32
 },
 ```
 
 **Options**
 
-Each option controls displaying of a particular toolbar element. If all elements are hidden, the editor toolbar is not displayed.
+Each option controls displaying of a particular toolbar element. `height` controls the toolbar row height in pixels. If all elements are hidden, the editor toolbar is not displayed.
 
 ## Use System Tabs
 
