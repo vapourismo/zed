@@ -64,6 +64,11 @@ pub struct TabBarSettings {
     pub show_pinned_tabs_in_separate_row: bool,
 }
 
+#[derive(Deserialize, RegisterSetting)]
+pub struct EditorToolbarSettings {
+    pub height: u32,
+}
+
 impl Settings for WorkspaceSettings {
     fn from_settings(content: &settings::SettingsContent) -> Self {
         let workspace = &content.workspace;
@@ -125,6 +130,15 @@ impl Settings for TabBarSettings {
             show_nav_history_buttons: tab_bar.show_nav_history_buttons.unwrap(),
             show_tab_bar_buttons: tab_bar.show_tab_bar_buttons.unwrap(),
             show_pinned_tabs_in_separate_row: tab_bar.show_pinned_tabs_in_separate_row.unwrap(),
+        }
+    }
+}
+
+impl Settings for EditorToolbarSettings {
+    fn from_settings(content: &settings::SettingsContent) -> Self {
+        let toolbar = content.editor.toolbar.clone().unwrap_or_default();
+        Self {
+            height: toolbar.height.unwrap_or(32).max(1),
         }
     }
 }
