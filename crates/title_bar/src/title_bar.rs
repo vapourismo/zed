@@ -167,6 +167,12 @@ pub struct TitleBar {
 impl Render for TitleBar {
     fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         let title_bar_settings = *TitleBarSettings::get_global(cx);
+        if !title_bar_settings.show {
+            self.platform_titlebar.update(cx, |this, _| {
+                this.set_children(std::iter::empty::<AnyElement>());
+            });
+            return div().w_full().h_0().into_any_element();
+        }
 
         let show_menus = show_menus(cx);
 
