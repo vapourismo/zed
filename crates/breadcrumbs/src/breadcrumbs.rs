@@ -49,7 +49,7 @@ impl Render for Breadcrumbs {
         let element = h_flex()
             .id("breadcrumb-container")
             .flex_grow()
-            .h_8()
+            .h_full()
             .overflow_x_scroll()
             .text_ui(cx);
 
