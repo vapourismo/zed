@@ -81,6 +81,7 @@ pub struct Toolbar {
     pub selections_menu: bool,
     pub agent_review: bool,
     pub code_actions: bool,
+    pub height: u32,
 }
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
@@ -215,6 +216,7 @@ impl Settings for EditorSettings {
                 selections_menu: toolbar.selections_menu.unwrap(),
                 agent_review: toolbar.agent_review.unwrap(),
                 code_actions: toolbar.code_actions.unwrap(),
+                height: toolbar.height.unwrap_or(32).max(1),
             },
             scrollbar: Scrollbar {
                 show: scrollbar.show.map(Into::into).unwrap(),
